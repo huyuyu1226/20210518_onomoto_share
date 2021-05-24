@@ -15,12 +15,18 @@
         <div class="message" v-for="(comment, index) in data" :key="index">
           <div class="flex">
             <p class="name">{{ comment.comment_user.name }}</p>
+            <p class="time">{{comment.comment.created_at}}</p>
+            <img
+            class="icon"
+            src="../assets/cross.png"
+            @click="commnetDel(comment.comment.id)"
+          />
           </div>
           <div>
             <p class="text">{{ comment.comment.content }}</p>
           </div>
         </div>
-        <input v-model="content" type="text" />
+        <input v-model="content" type="text" placeholder="コメントをする"/>
         <div @click="send">
           <button>コメント</button>
         </div>
@@ -65,6 +71,21 @@ export default {
           this.data = response.data.comment;
         });
     },
+    commnetDel(id) {
+      axios.delete("http://127.0.0.1:8000/api/comment",
+      {
+        params: {
+          id:id
+        }
+      })
+      .then((response => {
+        console.log(response);
+        this.$router.go({
+            path: this.$router.currentRoute.path,
+            force: true,
+          });
+      }))
+    }
   },
   created() {
     this.comment();
@@ -138,5 +159,17 @@ button {
   border-radius: 25px;
   display: block;
   margin: 0 0 0 auto;
+}
+.time {
+  padding-left: 20px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  left: 10px;
+  bottom: 5px;
+  cursor: pointer;
 }
 </style>

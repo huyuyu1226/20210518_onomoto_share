@@ -25,6 +25,7 @@
             alt
             v-if="profile"
           />
+          <p v-if="profile"><span>{{value.comment.length}}</span></p>
         </div>
         <p class="text">{{ value.item.share }}</p>
       </div>
@@ -41,6 +42,7 @@ export default {
       shares: [],
       path: true,
       profile: true,
+      length:""
     };
   },
   methods: {
@@ -123,7 +125,7 @@ export default {
       }
       this.shares = data;
       console.log(this.shares);
-    }
+    },
   },
   created() {
     if (this.$route.name === "home") {
@@ -167,5 +169,8 @@ export default {
 }
 .date {
   position: right;
+}
+span {
+  padding-left :10px;
 }
 </style>

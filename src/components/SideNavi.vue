@@ -14,6 +14,10 @@
         <img class="icon" src="../assets/logout.png" />
         <p>ログアウト</p>
       </div>
+      <div class="flex icon-field" @click="$router.push('/favorite')">
+        <img class="icon" src="../assets/heart.png" />
+        <p>お気に入り</p>
+      </div>
     </div>
     <ShareMessage />
   </div>
