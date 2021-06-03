@@ -32,7 +32,7 @@ export default {
   methods: {
     auth() {
       axios
-        .post("http://127.0.0.1:8000/api/register", {
+        .post("https://tranquil-bastion-65917.herokuapp.com/api/register", {
           name: this.name,
           profile: this.profile,
           email: this.email,

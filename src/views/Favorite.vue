@@ -28,13 +28,13 @@ export default {
   },
   methods: {
     async getLikes() {
-      await axios.get("http://127.0.0.1:8000/api/like")
+      await axios.get("https://tranquil-bastion-65917.herokuapp.com/api/like")
       .then((response => {
         console.log(response.data.data)
         const responseLikes = response.data.data
         this.like = responseLikes
       }))
-      await axios.get("http://127.0.0.1:8000/api/shares")
+      await axios.get("https://tranquil-bastion-65917.herokuapp.com/api/shares")
       .then((response => {
        console.log(response.data.data)
        const responseShares = response.data.data
